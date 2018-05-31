@@ -1,12 +1,23 @@
 const express = require('express');
 const logger = require('morgan');
-const bodyPrser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
+const todoRouter = require('./routes/todoRouter');
 
 const PORT = process.env.PORT || 3007;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
+app.use('/tdo', todoRouter);
+
+app.get('/todo', (req, res) => {
+	res.json({'msg': 'todo'})
+});
 
 app.listen(PORT, () => {
 	console.log(`${PORT} says hi`);
