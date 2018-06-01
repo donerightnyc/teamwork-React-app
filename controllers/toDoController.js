@@ -7,3 +7,7 @@ function getAll(req, res, next) {
 		next();
 	}).catch(next);
 }
+
+module.exports = {
+	getAll
+}
