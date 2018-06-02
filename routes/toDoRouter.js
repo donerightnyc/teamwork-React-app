@@ -9,4 +9,15 @@ todoRouter.route('/')
 		respController.sendErrResp
 	);
 
+	toDoRouter.route('/:id')
+		.get(
+			todoController.getOne,
+			respController.sendOkResp,
+			respController.sendErrResp);
+
+			.post(
+				toDoController.create,
+				respController.sendOkResp,
+				respController.sendErrResp);
+
 	module.exports = todoRouter;

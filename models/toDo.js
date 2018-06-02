@@ -7,7 +7,7 @@ function getAll() {
 
 function getOne(id) {
 	return db.one(`
-		SELECT * FROM events
+		SELECT * FROM todo
 		WHERE id = $1
 	`, id);
 }
