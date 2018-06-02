@@ -22,8 +22,7 @@ function create(task) {
 
 function destroy(id) {
 	return db.none(`
-		DELETE FROM task WEHRE
-		id = $1
+		DELETE FROM task WEHRE id = $1
 	`, id);
 }
 

@@ -6,29 +6,28 @@ todoRouter.route('/')
 	.get(
 		todoController.getAll,
 		respController.sendOkResp,
-		respController.sendErrResp
-	);
+		respController.sendErrResp);
 
-	toDoRouter.route('/:id')
-		.get(
-			todoController.getOne,
-			respController.sendOkResp,
-			respController.sendErrResp);
 
-		.post(
-			toDoController.create,
-			respController.sendOkResp,
-			respController.sendErrResp);
+	.post(
+		todoController.create,
+		respController.sendOkResp,
+		respController.sendErrResp);
 
-		.delete(
-			toDoController.destroy,
-			respController.sendOkResp,
-			respController.sendOkResp,
-			respController.sendErrResp);
+todoRouter.route('/:id')
+	.get(
+		todoController.getOne,
+		respController.sendOkResp,
+		respController.sendErrResp)
 
-		 .put(
-			 toDoController.update,
-			 respController.sendOkResp,
-			 respController.sendErrResp);
+	.delete(
+		todoController.destroy,
+		respController.sendOkResp,
+		respController.sendErrResp)
 
-	module.exports = todoRouter;
+	.put(
+		todoController.update,
+		respController.sendOkResp,
+		respController.sendErrResp);
+
+module.exports = todoRouter;

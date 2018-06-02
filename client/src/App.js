@@ -11,19 +11,19 @@ class App extends Component {
     super(props);
 
     this.state = {
-      tasks: []
+      todo: ['yeah']
     }
   }
   fetchTasks() {
-    fetch('/task')
+    fetch('/todo')
       .then(resp => {
         if (!resp.ok) {
           throw Error('failure: ', resp.message);
         }
         return resp.json();
       }).then(data => this.setState ({
-        tasks: data.data
-      })).catch(err => console.log(`error: ${err}`))
+        todo: data.data
+      })).catch(err => console.log(`failure: ${err}`))
   }
 
   componentDidMount() {
@@ -34,15 +34,15 @@ class App extends Component {
       <div className="App">
         <Navbar/>
         <Switch>
-          <Route exact path='/'/>
+
           <Route exact path='/todo' component={(props) => (
             <Todo
               {...props}
               todo={this.state.todo}/>
-          )}/>
+          )} />
         </Switch>
         <p>App.js</p>
-        <Todo/>
+
         <Footer/>
       </div>
     );
