@@ -9,15 +9,14 @@ class Todo extends Component {
 
 				{/* {this.props.todo.map(task => (
 
-					<div Key={todo.id}
+					<div Key={task.id}
 						className='todo-list'>
-						<div key={todo.id}>
-							{todo.id}
-							<p>{todo.task}</p>
+						<div key={task.id}>
+							<p>{task.task}</p>
 							<Link to ={`todo/${task.id}`}>Edit task</Link>
 						</div>
-					</div>
-				))} */}
+					</div> */}
+				))}
 			</div>
 		)
 	}

@@ -15,9 +15,20 @@ todoRouter.route('/')
 			respController.sendOkResp,
 			respController.sendErrResp);
 
-			.post(
-				toDoController.create,
-				respController.sendOkResp,
-				respController.sendErrResp);
+		.post(
+			toDoController.create,
+			respController.sendOkResp,
+			respController.sendErrResp);
+
+		.delete(
+			toDoController.destroy,
+			respController.sendOkResp,
+			respController.sendOkResp,
+			respController.sendErrResp);
+
+		 .put(
+			 toDoController.update,
+			 respController.sendOkResp,
+			 respController.sendErrResp);
 
 	module.exports = todoRouter;

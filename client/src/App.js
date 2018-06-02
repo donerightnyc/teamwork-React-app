@@ -33,6 +33,14 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
+        <Switch>
+          <Route exact path='/'/>
+          <Route exact path='/todo' component={(props) => (
+            <Todo
+              {...props}
+              todo={this.state.todo}/>
+          )}/>
+        </Switch>
         <p>App.js</p>
         <Todo/>
         <Footer/>
