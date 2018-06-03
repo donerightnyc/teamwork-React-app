@@ -21,6 +21,7 @@ class TaskForm extends Component {
 			}
 		}))
 	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.func(this.state.event);
@@ -42,8 +43,8 @@ class TaskForm extends Component {
 
           <label>
 						<h4>Task</h4>
-						<textarea rows='8' colts ='80'
-							name='taks'
+						<textarea rows='3' colts ='80'
+							name='task'
 							value={task}
 							onChange={this.handleChange.bind(this)}/>
 					</label>

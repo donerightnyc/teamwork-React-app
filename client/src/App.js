@@ -98,23 +98,21 @@ class App extends Component {
     return (
       <div className='App'>
         <Navbar/>
-        <CreateTask/>
-        <EditTask/>
-        <TaskForm/>
+
         <Switch>
-          <Route exact path='/todo' component={(props) => (
+          <Route exact path='/' component={(props) => (
             <Todo
               {...props}
               todo={this.state.todo}/>
             )} />
 
-              <Route exact path='todo/new'
+              <Route exact path='/new'
               component={() => (
                 <CreateTask
                   onSubmit={this.createTask.bind(this)} />
               )} />
 
-          <Route exact path='/todo/:id/edit'
+          <Route exact path='/:id/edit'
           component={(props) => (
             <EditTask
               {...props}
@@ -122,7 +120,7 @@ class App extends Component {
               onSubmit={this.updateTask.bind(this)} />
           )} />
 
-          <Route path='/todo/:id'
+          <Route path='/:id'
           component={(props) => (
             <SingleTask
             {...props}
@@ -130,6 +128,8 @@ class App extends Component {
             del={() =>
             this.handleDelete(props.match.params.id)}/>
           )} />
+
+
 
         </Switch>
         <Footer/>
