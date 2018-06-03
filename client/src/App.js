@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import Todo from './Components/Todo';
-import Navbar from './Components/Header';
+import CreateTask from './Components/CreateTask';
+import EditTask from './Components/EditTask';
 import Footer from './Components/Footer';
+import Navbar from './Components/Header';
+import TaskForm from './Components/TaskForm';
+import Todo from './Components/Todo';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       todo: []
     }
     this.findTask = this.findTask.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-
   }
+
   fetchTasks() {
     fetch('/todo')
       .then(resp => {
@@ -95,6 +97,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
+        <CreateTask/>
+        <EditTask/>
+        <TaskForm/>
         <Switch>
           <Route exact path='/todo' component={(props) => (
             <Todo
