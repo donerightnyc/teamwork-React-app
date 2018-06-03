@@ -12,6 +12,9 @@ class App extends Component {
     this.state = {
       todo: []
     }
+    this.findTask = this.findTask.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+
   }
   fetchTasks() {
     fetch('/todo')
@@ -23,6 +26,66 @@ class App extends Component {
       }).then(data => this.setState ({
         todo: data.data
       })).catch(err => console.log(`failure: ${err}`))
+  }
+
+  findTask(id) {
+    const task = (this.state.todo).filter(t => (t.id === parseInt(id, 10)));//I am not sure how this line works
+    return task[0]
+  }
+
+  createTask(task) {
+    fetch('todo/new', {
+      method: 'POST',
+      body: JSON.stringify(task),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(resBody => {
+      this.setState((prevState, props) => {
+        return {
+          todo: prevState.task.concat(resBody.data)
+        }
+      })
+    })
+  }
+
+  updateTask(task) {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    };
+    const URL = `/todo/${task.id}`;
+    fetch(URL, options).then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+  }
+
+  deleteTask(id) {
+    fetch(`/todo/${id}`, {
+      method: 'DELETE'
+    })
+    .then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+    .then(respBody => {
+      this.setState((prevState, props) => {
+        return {
+          todo: prevState.todo.filter(task => task.id !== id)
+        }
+      })
+    })
+  }
+
+  handleDelete(id) {
+    this.deleteTask(id);
+    window.location.reload();
   }
 
   componentDidMount() {
