@@ -1,3 +1,8 @@
+*{
+	text-align: center;
+	color: lime;
+	background-color: black;
+}
 .todo-list{
 	width: 70%;
 	text-align: center;
