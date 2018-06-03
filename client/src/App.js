@@ -5,6 +5,7 @@ import CreateTask from './Components/CreateTask';
 import EditTask from './Components/EditTask';
 import Footer from './Components/Footer';
 import Navbar from './Components/Header';
+import SingleTask from './Components/SingleTask';
 import TaskForm from './Components/TaskForm';
 import Todo from './Components/Todo';
 
@@ -95,7 +96,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Navbar/>
         <CreateTask/>
         <EditTask/>
@@ -105,7 +106,31 @@ class App extends Component {
             <Todo
               {...props}
               todo={this.state.todo}/>
+            )} />
+
+              <Route exact path='todo/new'
+              component={() => (
+                <CreateTask
+                  onSubmit={this.createTask.bind(this)} />
+              )} />
+
+          <Route exact path='/todo/:id/edit'
+          component={(props) => (
+            <EditTask
+              {...props}
+              event={this.findTask(props.match.params.id)}
+              onSubmit={this.updateTask.bind(this)} />
           )} />
+
+          <Route path='/todo/:id'
+          component={(props) => (
+            <SingleTask
+            {...props}
+            event={this.findTask(props.match.params.id)}
+            del={() =>
+            this.handleDelete(props.match.params.id)}/>
+          )} />
+
         </Switch>
         <Footer/>
       </div>
