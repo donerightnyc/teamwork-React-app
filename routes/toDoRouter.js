@@ -6,7 +6,7 @@ todoRouter.route('/')
 	.get(
 		todoController.getAll,
 		respController.sendOkResp,
-		respController.sendErrResp);
+		respController.sendErrResp)
 
 
 	.post(

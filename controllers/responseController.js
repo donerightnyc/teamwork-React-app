@@ -1,7 +1,7 @@
 function sendOkResp(req, res) {
 	res.json({
 		status: 'ok',
-		data: res.locals.todo || res.locals.task
+		data: res.locals.todo || res.locals.tdo
 	})
 }
 

@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
 
 class Todo extends Component {
 	render() {
-		console.log(this.props.todo);
 		return(
-			<div>
+			<div className="list-container">
 			<h2>Todo</h2>
 				{this.props.todo.map(tdo => (
-					<div Key={tdo.todo}
+					<div key={tdo.id}
 							 className='todo-list'>
-							 <p>d</p>
-							<p>{tdo.id}</p>
-							<p>{tdo.todo}</p>
-							<p>{tdo.tdo}</p>
-							<p>{tdo.task}</p>
 							<p>{tdo.task}</p>
 					</div>
 				))}
