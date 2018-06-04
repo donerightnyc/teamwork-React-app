@@ -26,13 +26,13 @@ function destroy(id) {
 	`, id);
 }
 
-function update(tasks) {
+function update(task) {
 	return db.one(`
-		UPDATE tasks
+		UPDATE task
 		SET task = $/task/
 		WHERE id = $/id/
 		RETURNING *
-	`, tasks);
+	`, task);
 }
 
 module.exports = {

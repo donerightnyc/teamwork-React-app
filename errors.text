@@ -1,0 +1,6 @@
+-delete button doesn't work
+- on http://localhost:3000/1/edit the edit task button doesn't work
+- when clicking the edit task button, all the tasks disappear and the following error shows:
+Proxy error: Could not proxy request /todo from localhost:3000 to http://localhost:3007.
+[1] See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ECONNREFUSED).
+-
