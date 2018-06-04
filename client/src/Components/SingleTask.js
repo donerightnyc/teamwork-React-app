@@ -19,7 +19,7 @@ class SingleTask extends Component {
 		const { task, id } = this.state.event
 		return(
 			<div className="single-task">
-				<h4>Single tassk</h4>
+				<h4></h4>
 				<p>{task}</p>
 				<Link to={`/${id}/edit`}><button>Edit Task</button></Link>
 				<Link to="/"><button onClick={this.props.del}>Delete</button></Link>

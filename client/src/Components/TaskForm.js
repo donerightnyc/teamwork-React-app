@@ -49,9 +49,9 @@ class TaskForm extends Component {
 							onChange={this.handleChange.bind(this)}/>
 					</label>
 
-					<button type='submit'>{id ? 'edit-task' : 'create-task'}</button>
 
 				</form>
+				<button type='submit'>{id ? 'edit-task' : 'create-task'}</button>
 		  </div>
 		)
 	}

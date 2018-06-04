@@ -103,7 +103,7 @@ class App extends Component {
             <Todo
               {...props}
               todo={this.state.todo}/>
-            )} />
+            )}  />
 
               <Route exact path='/new'
               component={() => (
@@ -127,8 +127,6 @@ class App extends Component {
             del={() =>
             this.handleDelete(props.match.params.id)}/>
           )} />
-
-
 
         </Switch>
         <Footer/>
