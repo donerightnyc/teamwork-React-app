@@ -16,7 +16,7 @@ class SingleTask extends Component {
 	}//I am not sure about how line 15 works
 
 	render() {
-		const { task, id } = this.state.event
+		const { task, del, id } = this.state.event
 		return(
 			<div className="single-task">
 				<h4></h4>

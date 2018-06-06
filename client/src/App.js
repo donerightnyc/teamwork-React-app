@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   createTask(task) {
-    fetch('todo/new', {
+    fetch('/new', {
       method: 'POST',
       body: JSON.stringify(task),
       headers: {
@@ -61,7 +61,7 @@ class App extends Component {
       },
       body: JSON.stringify(task)
     };
-    const URL = `/todo/${task.id}`;
+    const URL = `/${task.id}`;
     fetch(URL, options).then(resp => {
       if (!resp.ok) throw new Error(resp.statusMessage);
       return resp.json();
@@ -69,7 +69,7 @@ class App extends Component {
   }
 
   deleteTask(id) {
-    fetch(`/todo/${id}`, {
+    fetch(`/${id}`, {
       method: 'DELETE'
     })
     .then(resp => {
