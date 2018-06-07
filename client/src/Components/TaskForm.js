@@ -6,17 +6,17 @@ class TaskForm extends Component {
 		super(props);
 		this.state = {
 			redirectHome: false,
-			event: Object.assign({
+			task: Object.assign({
 				task: ''
-			}, props.event)
+			}, props.task)
 		}
 	}
 
 	handleChange(e) {
 		const { name, value } = e.target;
 		this.setState((prevState, props) => ({
-			event:{
-				...prevState.event,
+			task:{
+				...prevState.task,
 				[name]:value
 			}
 		}))
@@ -24,14 +24,14 @@ class TaskForm extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.func(this.state.event);
+		this.props.func(this.state.task);
 		window.location.reload();
 		this.setState({
 			redirectHome: true
 		});
 	}
 	render() {
-		const { task, id } = this.state.event
+		const { task, id } = this.state.task
 		return(
 			<div className="TaskForm">
 
@@ -39,7 +39,7 @@ class TaskForm extends Component {
 					onSubmit={this.handleSubmit.bind(this)}
 					className={id ? 'edit-task' : 'create-task'}>
 					{this.state.redirectHome &&
-					<Redirect to='/'/>}
+					<Redirect to='/todo'/>}
 
           <label>
 						<h4>Task</h4>
@@ -49,9 +49,9 @@ class TaskForm extends Component {
 							onChange={this.handleChange.bind(this)}/>
 					</label>
 
+					<button type='submit'>{id ? 'edit-task' : 'create-task'}</button>
 
 				</form>
-				<button type='submit'>{id ? 'edit-task' : 'create-task'}</button>
 		  </div>
 		)
 	}

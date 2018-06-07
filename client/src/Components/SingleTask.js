@@ -5,18 +5,18 @@ class SingleTask extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			event: Object.assign({
+			task: Object.assign({
 				task: '',
-			}, props.event)
+			}, props.task)
 		}
 	}
 
 	editTask(id) {
-		this.props.history.push(`/${id}`);
+		this.props.history.push(`/api/todo/${id}`);
 	}//I am not sure about how line 15 works
 
 	render() {
-		const { task, del, id } = this.state.event
+		const { task, id } = this.state.task
 		return(
 			<div className="single-task">
 				<h4></h4>
