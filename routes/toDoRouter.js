@@ -6,9 +6,9 @@ todoRouter.route('/')
 	.get(
 		todoController.getAll,
 		respController.sendOkResp,
-		respController.sendErrResp)
+		respController.sendErrResp);
 
-
+todoRouter.route('/new')
 	.post(
 		todoController.create,
 		respController.sendOkResp,

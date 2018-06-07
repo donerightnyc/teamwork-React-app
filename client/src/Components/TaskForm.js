@@ -7,7 +7,7 @@ class TaskForm extends Component {
 		this.state = {
 			redirectHome: false,
 			event: Object.assign({
-				task: '',
+				task: ''
 			}, props.event)
 		}
 	}

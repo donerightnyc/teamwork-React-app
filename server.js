@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
-const todoRouter = require('./routes/toDoRouter');
+const apiRouter = require('./routes/api');
 
 const PORT = process.env.PORT || 3007;
 
@@ -13,12 +13,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-
-app.use('/todo', todoRouter);
-
-// app.get('/yeah', (req, res) => {
-// 	res.json({'msg': 'todo'})
-// });
+app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
 	console.log(`${PORT} says hi`);

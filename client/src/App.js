@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   fetchTasks() {
-    fetch('/todo')
+    fetch('/api/todo')
       .then(resp => {
         if (!resp.ok) {
           throw Error('fetch failure: ', resp.message);
@@ -31,12 +31,12 @@ class App extends Component {
   }
 
   findTask(id) {
-    const task = (this.state.todo).filter(t => (t.id === parseInt(id, 10)));//I am not sure how this line works
+    const task = this.state.todo.filter(t => (t.id === parseInt(id, 10)));//I am not sure how this line works
     return task[0]
   }
 
   createTask(task) {
-    fetch('/new', {
+    fetch('/api/todo/new', {
       method: 'POST',
       body: JSON.stringify(task),
       headers: {
@@ -61,7 +61,7 @@ class App extends Component {
       },
       body: JSON.stringify(task)
     };
-    const URL = `/${task.id}`;
+    const URL = `/api/todo/${task.id}`;
     fetch(URL, options).then(resp => {
       if (!resp.ok) throw new Error(resp.statusMessage);
       return resp.json();
@@ -69,7 +69,7 @@ class App extends Component {
   }
 
   deleteTask(id) {
-    fetch(`/${id}`, {
+    fetch(`/api/todo/${id}`, {
       method: 'DELETE'
     })
     .then(resp => {
@@ -99,19 +99,14 @@ class App extends Component {
         <Navbar/>
 
         <Switch>
-          <Route exact path='/' component={(props) => (
-            <Todo
-              {...props}
-              todo={this.state.todo}/>
-            )}  />
 
-              <Route exact path='/new'
+              <Route exact path='/api/todo/new'
               component={() => (
                 <CreateTask
                   onSubmit={this.createTask.bind(this)} />
               )} />
 
-          <Route exact path='/:id/edit'
+          <Route exact path='/api/todo/:id/edit'
           component={(props) => (
             <EditTask
               {...props}
@@ -119,7 +114,7 @@ class App extends Component {
               onSubmit={this.updateTask.bind(this)} />
           )} />
 
-          <Route path='/:id'
+          <Route path='/api/todo/:id'
           component={(props) => (
             <SingleTask
             {...props}
@@ -127,6 +122,12 @@ class App extends Component {
             del={() =>
             this.handleDelete(props.match.params.id)}/>
           )} />
+
+          <Route exact path='/api/todo' component={(props) => (
+            <Todo
+              {...props}
+              todo={this.state.todo}/>
+            )}  />
 
         </Switch>
         <Footer/>
