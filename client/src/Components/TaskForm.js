@@ -39,7 +39,7 @@ class TaskForm extends Component {
 					onSubmit={this.handleSubmit.bind(this)}
 					className={id ? 'edit-task' : 'create-task'}>
 					{this.state.redirectHome &&
-					<Redirect to='/todo'/>}
+					<Redirect to='/api/todo'/>}
 
           <label>
 						<h4>Task</h4>

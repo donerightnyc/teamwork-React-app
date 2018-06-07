@@ -7,7 +7,7 @@ class EditTask extends Component {
 			<div className="edit-task">
 				<h3>EditTask</h3>
 				<TaskForm
-					task={this.props.event}
+					task={this.props.task}
 					id='edit-task'
 					func={this.props.onSubmit}/>
 			</div>

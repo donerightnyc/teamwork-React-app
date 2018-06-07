@@ -21,8 +21,8 @@ class SingleTask extends Component {
 			<div className="single-task">
 				<h4></h4>
 				<p>{task}</p>
-				<Link to={`/${id}/edit`}><button>Edit Task</button></Link>
-				<Link to="/"><button onClick={this.props.del}>Delete</button></Link>
+				<Link to={`/api/todo/${id}/edit`}><button>Edit Task</button></Link>
+				<Link to="/api/todo"><button onClick={this.props.del}>Delete</button></Link>
 			</div>
 		)
 	}

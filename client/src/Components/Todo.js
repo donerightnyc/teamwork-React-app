@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TaskForm from './TaskForm';
 import SingleTask from './SingleTask';
+import CreateTask from './CreateTask';
+import EditTask from './EditTask';
 
 class Todo extends Component {
 
@@ -11,12 +13,17 @@ class Todo extends Component {
 
 				<TaskForm
 					id='create-task'
-					func={this.props.onSubmit}/>
+					func={this.props.onSubmit}
+					task={this.props.task}
+				  />
 
 					{this.props.todo.map(tdo => (
 						<div key={tdo.id}
 								 className='todo-list'>
+
 								<p>{tdo.task}</p>
+
+								<EditTask/>
 								<SingleTask/>
 						</div>
 				))}

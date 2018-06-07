@@ -100,17 +100,17 @@ class App extends Component {
 
         <Switch>
 
-              <Route exact path='/api/todo/new'
-              component={() => (
-                <CreateTask
-                  onSubmit={this.createTask.bind(this)} />
-              )} />
+          <Route exact path='/api/todo/new'
+          component={() => (
+            <CreateTask
+              onSubmit={this.createTask.bind(this)} />
+          )} />
 
           <Route exact path='/api/todo/:id/edit'
           component={(props) => (
             <EditTask
               {...props}
-              event={this.findTask(props.match.params.id)}
+              task={this.findTask(props.match.params.id)}
               onSubmit={this.updateTask.bind(this)} />
           )} />
 
@@ -118,7 +118,7 @@ class App extends Component {
           component={(props) => (
             <SingleTask
             {...props}
-            event={this.findTask(props.match.params.id)}
+            task={this.findTask(props.match.params.id)}
             del={() =>
             this.handleDelete(props.match.params.id)}/>
           )} />
