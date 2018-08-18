@@ -13,7 +13,7 @@ class SingleTask extends Component {
 
 	editTask(id) {
 		this.props.history.push(`/api/todo/${id}`);
-	}//I am not sure about how line 15 works
+	}
 
 	render() {
 		const { task, id } = this.state.task

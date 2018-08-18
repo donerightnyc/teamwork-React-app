@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import CreateTask from './Components/CreateTask';
 import EditTask from './Components/EditTask';
-import Footer from './Components/Footer';
 import Navbar from './Components/Header';
 import SingleTask from './Components/SingleTask';
 import Todo from './Components/Todo';
@@ -130,7 +129,6 @@ class App extends Component {
             )}  />
 
         </Switch>
-        <Footer/>
       </div>
     );
   }
